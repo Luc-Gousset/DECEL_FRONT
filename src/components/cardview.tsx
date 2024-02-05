@@ -126,13 +126,13 @@ export default function Card_view() {
 
                     <div className="basis-1/3 mx-2">
                         <AnalogOUT analogOUT_array={AnalogOUTArray} set_analog_out_array={setAnalogOUTArray} />
-
+                        <AnalogIN analogIn_array={AnalogINArray} />
                         <MCP41010Component potentiometer={MCP41010} set_potentiometer={setMCP41010} />
 
                     </div>
 
                     <div className="basis-1/3 mx-2">
-                        <VideoPlayer src={`http://192.168.137.2:8888/card${card_id}/index.m3u8`} />
+                        <VideoPlayer src={`${window.location.origin}/webcam/card${card_id}/index.m3u8`} />
                     </div>
 
                 </div>

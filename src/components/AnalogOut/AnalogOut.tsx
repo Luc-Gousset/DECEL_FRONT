@@ -9,7 +9,7 @@ import 'rc-slider/assets/index.css';
 import React, { useEffect, useState } from "react";
 
 interface AnalogOUT_props {
-    analogOUT_array: AnalogOUT_t[] ,
+    analogOUT_array: AnalogOUT_t[],
     set_analog_out_array: (value: AnalogOUT_t[]) => void,
 }
 
@@ -44,7 +44,7 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
 
     const param = useParams();
     const card_id = param.cardId || "";
-  
+
 
     const handleInput = (val: string, id: number) => {
         //round to closest step
@@ -57,11 +57,11 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
         const updatedArray = analogOUT_array.map((c, i) => {
             if (c.id === id) {
                 c.value = rounded_val;
-              return c;
+                return c;
             } else {
-              return c;
+                return c;
             }
-          });
+        });
 
         set_analog_out_array(updatedArray);
 
@@ -73,12 +73,12 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
             const updatedArray = analogOUT_array.map((c, i) => {
                 if (c.id === id) {
                     c.value = val;
-                  return c;
+                    return c;
                 } else {
-                  return c;
+                    return c;
                 }
-              });
-    
+            });
+
             set_analog_out_array(updatedArray);
             handleAnalogOutChange(id);
         }
@@ -88,7 +88,7 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
     const handleAnalogOutChange = (id: number) => {
 
         const analogOut: AnalogOUT_t = analogOUT_array[id];
-        const socket_msg: SocketInterface = {message_header: "analog_out_update", card_id: parseInt(card_id), data: JSON.stringify(analogOut)};
+        const socket_msg: SocketInterface = { message_header: "analog_out_update", card_id: parseInt(card_id), data: JSON.stringify(analogOut) };
         socket.send(JSON.stringify(socket_msg));
 
     }
@@ -97,14 +97,15 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
         <div className="flex flex-col bg-gray-300 rounded-lg shadow-md p-4 my-2 items-center">
             <span className="text-2xl font-medium text-gray-800">Analog Output</span>
 
-                {analogOUT_array.map((output, index) => (
+            {analogOUT_array.filter(val => val.is_enable === true).
+                map((output, index) => (
                     <AnalogOutputControl key={output.id}
                         output={output}
                         index={output.id}
                         onInputChange={handleInput}
                         onSliderChange={handleSlider} />
                 ))}
-            </div>
+        </div>
     );
 };
 

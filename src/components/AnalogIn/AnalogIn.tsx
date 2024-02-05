@@ -8,6 +8,7 @@ interface AnalogIN_props {
 
 const AnalogIN: React.FC<AnalogIN_props> = ({ analogIn_array }: AnalogIN_props) => {
     const Analogin_content = analogIn_array
+    .filter(val => val.is_enable === true)
     .map(val => (
         <div key={val.id} className="flex  justify-between px-4 py-1 mb-1">
             <span className="text-lg font-medium text-gray-800">{val.name}:  </span>

@@ -14,7 +14,7 @@ import Card_edit_view from '@/components/card_edit';
 import './App.css'
 
 
-const WEBSOCKET_ADDRESS = "ws://192.168.137.2:8080";
+const WEBSOCKET_ADDRESS = "ws://"+window.location.href.split('/')[2]+"/socket";
 
 export var socket = new WebSocket(WEBSOCKET_ADDRESS);
 
@@ -149,7 +149,7 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <body className='select-none'>
+    <body className='select-none m-0'>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
