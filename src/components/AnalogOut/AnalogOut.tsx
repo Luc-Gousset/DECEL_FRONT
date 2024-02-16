@@ -93,20 +93,25 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
 
     }
 
+    const analogOutContent = analogOUT_array.filter(val => val.is_enable === true).
+    map((output, index) => (
+        <AnalogOutputControl key={output.id}
+            output={output}
+            index={output.id}
+            onInputChange={handleInput}
+            onSliderChange={handleSlider} />
+    ))
+    
+    if(analogOutContent.length>0)
     return (
         <div className="flex flex-col bg-gray-300 rounded-lg shadow-md p-4 my-2 items-center">
             <span className="text-2xl font-medium text-gray-800">Analog Output</span>
 
-            {analogOUT_array.filter(val => val.is_enable === true).
-                map((output, index) => (
-                    <AnalogOutputControl key={output.id}
-                        output={output}
-                        index={output.id}
-                        onInputChange={handleInput}
-                        onSliderChange={handleSlider} />
-                ))}
+            {analogOutContent}
         </div>
     );
+    else
+    return(<></>);
 };
 
 export default AnalogOUT;

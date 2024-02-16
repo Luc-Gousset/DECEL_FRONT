@@ -75,6 +75,19 @@ export default function Card_view() {
                         setGPIOArray(updatedGpioArray);
                         break;
 
+                    case "ANALOG_IN_CHANGE":
+                        const analogIn_config: AnalogIN_t = JSON.parse(msg.data);
+                        const updatedAnalogInArray = AnalogINArray.map((c, i) => {
+                            if (c.id === analogIn_config.id) {
+                                return analogIn_config;
+                            } else {
+                                return c;
+                            }
+                        });
+                        setAnalogINArray(updatedAnalogInArray);
+
+                        break;
+
                     case "mcp41010_updated":
                         console.log("enter mcp update")
                         const MCP41010_config: MCP41010_t = JSON.parse(msg.data);

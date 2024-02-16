@@ -65,7 +65,8 @@ const MCP41010Component: React.FC<MCP41010Props> = ({ potentiometer, set_potenti
         const socket_msg: SocketInterface = { message_header: "mcp41010_update", card_id: parseInt(card_id), data: JSON.stringify(newPotentiometer) };
         socket.send(JSON.stringify(socket_msg));
     }
-
+    
+    if(potentiometer?.is_enable)
     return (
         <div className="flex flex-col bg-gray-300 rounded-lg shadow-md p-4 my-2 items-center">
             <span className="text-2xl font-medium text-gray-800">Potentiomètre numérique</span>
@@ -76,6 +77,8 @@ const MCP41010Component: React.FC<MCP41010Props> = ({ potentiometer, set_potenti
                     onSliderChange={handleSlider} />
         </div>
     );
+    else
+    return(<></>);
 };
 
 export default MCP41010Component;

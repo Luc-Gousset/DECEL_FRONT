@@ -125,6 +125,19 @@ export default function Card_edit_view() {
                             <div key={index} className="m-2 p-2 border rounded bg-gray-300">
                                 <h2 className="mb-2 font-bold">Analog IN {analogIN.id}</h2>
                                 <div className="mb-2">
+                                    <label className="mr-2">Name:</label>
+                                    <input
+                                        type="text"
+                                        value={analogIN.name}
+                                        onChange={(e) => {
+                                            const newAnalogINArray = [...AnalogINArray];
+                                            newAnalogINArray[index] = { ...analogIN, name: e.target.value };
+                                            setAnalogINArray(newAnalogINArray);
+                                        }}
+                                    />
+                                </div>
+
+                                <div className="mb-2">
                                     <label className="mr-2">Enabled:</label>
                                     <input
                                         type="checkbox"

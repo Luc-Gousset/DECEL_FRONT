@@ -8,6 +8,13 @@ module.exports = {
   ],
 
   theme: {
+    fontFamily: {
+      sans: [
+        '"Segoe UI"',
+        'Roboto',
+        'sans-serif',
+      ],
+    },
     extend: {},
   },
   plugins: [],
