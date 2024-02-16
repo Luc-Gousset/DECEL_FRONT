@@ -12,7 +12,7 @@ const AnalogIN: React.FC<AnalogIN_props> = ({ analogIn_array }: AnalogIN_props) 
     .map(val => (
       <div key={val.id} className="flex  justify-between px-4 py-1 mb-1">
         <span className="text-lg font-normal	 text-gray-800">{val.name}:  </span>
-        <span className="text-lg font-medium text-orange-600 ml-4 t"> {val.value}V</span>
+        <span className="text-lg font-medium text-orange-600 ml-4 t"> {val.value.toFixed(4)}V</span>
       </div>
     ));
 
