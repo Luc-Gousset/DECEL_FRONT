@@ -24,7 +24,7 @@ const GPIOin: React.FC<GPIO_props> = ({ gpio_array }: GPIO_props) => {
 
 return (
   <div className="flex flex-col items-center bg-gray-300 rounded-lg shadow-md p-4 my-2">
-    <span className="text-2xl font-medium text-gray-800">GPIO Input</span>
+    <span className="text-2xl font-medium text-gray-800">Lecture GPIO</span>
     <div className="flex flex-wrap overflow-auto place-content-between">
       {GPIO_visu}
     </div>

@@ -44,7 +44,7 @@ const GPIOout: React.FC<GPIO_props> = ({gpio_array, set_gpîo_array}: GPIO_props
 
   return (
     <div className="flex flex-col items-center bg-gray-300 rounded-lg shadow-md p-4 my-2">
-      <span className="text-2xl font-medium text-gray-800">GPIO Output</span>
+      <span className="text-2xl font-medium text-gray-800">Sortie GPIO</span>
       <div className="flex flex-wrap place-content-between">
         {GPIO_buttons}
 

@@ -36,9 +36,8 @@ socket.onclose = () => {
 const reconnectSocket = () => {
   return new Promise<void>((resolve, reject) => {
     // Logic to reconnect the socket
-    // This can vary depending on how you manage your WebSocket instance
     try {
-      socket = new WebSocket(WEBSOCKET_ADDRESS); // replace with your WebSocket URL
+      socket = new WebSocket(WEBSOCKET_ADDRESS); 
       socket.onopen = () => resolve();
       socket.onerror = (error) => reject(error);
     } catch (error) {

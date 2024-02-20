@@ -58,7 +58,7 @@ export default function Card_edit_view() {
                 data: JSON.stringify(config)
             };
             socket.send(JSON.stringify(socket_msg));
-            toast("Configuration sent", {
+            toast("Configuration envoyé", {
                 position: "top-center",
                 autoClose: 1500,
                 hideProgressBar: true,
@@ -112,7 +112,7 @@ export default function Card_edit_view() {
                                     >
                                         <option value={GPIO_State.Output}>Output</option>
                                         <option value={GPIO_State.Input}>Input</option>
-                                        <option value={GPIO_State.Disabled}>Disabled</option>
+                                        <option value={GPIO_State.Disabled}>Desactivé</option>
                                     </select>
                                 </div>
                             </div>
@@ -123,9 +123,9 @@ export default function Card_edit_view() {
                     <div className="flex flex-wrap">
                         {AnalogINArray.map((analogIN, index) => (
                             <div key={index} className="m-2 p-2 border rounded bg-gray-300">
-                                <h2 className="mb-2 font-bold">Analog IN {analogIN.id}</h2>
+                                <h2 className="mb-2 font-bold">Analog IN - {analogIN.id}</h2>
                                 <div className="mb-2">
-                                    <label className="mr-2">Name:</label>
+                                    <label className="mr-2">Nom :</label>
                                     <input
                                         type="text"
                                         value={analogIN.name}
@@ -138,7 +138,7 @@ export default function Card_edit_view() {
                                 </div>
 
                                 <div className="mb-2">
-                                    <label className="mr-2">Enabled:</label>
+                                    <label className="mr-2">Activation :</label>
                                     <input
                                         type="checkbox"
                                         checked={analogIN.is_enable}
@@ -156,9 +156,9 @@ export default function Card_edit_view() {
                     <div className="flex flex-wrap">
                         {AnalogOUTArray.map((analogOUT, index) => (
                             <div key={index} className="m-2 p-2 border rounded bg-gray-300">
-                                <h2 className="mb-2 font-bold">Analog OUT {analogOUT.id}</h2>
+                                <h2 className="mb-2 font-bold">Analog OUT - {analogOUT.id}</h2>
                                 <div className="mb-2">
-                                    <label className="mr-2">Name:</label>
+                                    <label className="mr-2">Nom :</label>
                                     <input
                                         type="text"
                                         value={analogOUT.name}
@@ -170,7 +170,7 @@ export default function Card_edit_view() {
                                     />
                                 </div>
                                 <div className="mb-2">
-                                    <label className="mr-2">Value:</label>
+                                    <label className="mr-2">Valeur :</label>
                                     <input
                                         type="number"
                                         value={analogOUT.value}
@@ -181,32 +181,9 @@ export default function Card_edit_view() {
                                         }}
                                     />
                                 </div>
+
                                 <div className="mb-2">
-                                    <label className="mr-2">Min Value:</label>
-                                    <input
-                                        type="number"
-                                        value={analogOUT.min_value}
-                                        onChange={(e) => {
-                                            const newAnalogOUTArray = [...AnalogOUTArray];
-                                            newAnalogOUTArray[index] = { ...analogOUT, min_value: parseFloat(e.target.value) };
-                                            setAnalogOUTArray(newAnalogOUTArray);
-                                        }}
-                                    />
-                                </div>
-                                <div className="mb-2">
-                                    <label className="mr-2">Max Value:</label>
-                                    <input
-                                        type="number"
-                                        value={analogOUT.max_value}
-                                        onChange={(e) => {
-                                            const newAnalogOUTArray = [...AnalogOUTArray];
-                                            newAnalogOUTArray[index] = { ...analogOUT, max_value: parseFloat(e.target.value) };
-                                            setAnalogOUTArray(newAnalogOUTArray);
-                                        }}
-                                    />
-                                </div>
-                                <div className="mb-2">
-                                    <label className="mr-2">Mode:</label>
+                                    <label className="mr-2">Mode :</label>
                                     <select
                                         value={analogOUT.mode}
                                         onChange={(e) => {
@@ -221,7 +198,7 @@ export default function Card_edit_view() {
                                     </select>
                                 </div>
                                 <div className="mb-2">
-                                    <label className="mr-2">Enabled:</label>
+                                    <label className="mr-2">Activation :</label>
                                     <input
                                         type="checkbox"
                                         checked={analogOUT.is_enable}
@@ -238,9 +215,9 @@ export default function Card_edit_view() {
                     {/* MCP41010 Configuration */}
                     <div className="flex flex-wrap">
                         <div className="m-2 p-2 border rounded bg-gray-300">
-                            <h2 className="mb-2 font-bold">MCP41010 Configuration</h2>
+                            <h2 className="mb-2 font-bold">Potentiomètre numérique</h2>
                             <div className="mb-2">
-                                <label className="mr-2">Enabled:</label>
+                                <label className="mr-2">Activation :</label>
                                 <input
                                     type="checkbox"
                                     checked={MCP41010.is_enable}
@@ -259,7 +236,7 @@ export default function Card_edit_view() {
                     className="bg-blue-500 p-2 rounded-xl hover:bg-blue-600 duration-300 delay-75 ease-in-out shadow m-4 text-white font-bold w-40 m-auto"
                     onClick={handleSubmit}
                 >
-                    Save Configuration
+                    Sauvegarder Configuration
                 </button>
                 <ToastContainer />
             </div>

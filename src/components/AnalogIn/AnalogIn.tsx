@@ -22,7 +22,7 @@ const AnalogIN: React.FC<AnalogIN_props> = ({ analogIn_array }: AnalogIN_props) 
 
       <div className="flex flex-col items-center bg-gray-300 rounded-lg shadow-md m-4 p-2">
 
-        <span className="text-2xl font-medium text-gray-800">Analog Input</span>
+        <span className="text-2xl font-medium text-gray-800">Lecture de tension</span>
         <div className="flex flex-wrap">
           {Analogin_content}
         </div>
