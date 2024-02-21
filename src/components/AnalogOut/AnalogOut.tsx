@@ -47,6 +47,8 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
 
 
     const handleInput = (val: string, id: number) => {
+        if(Number(val)<=analogOUT_array[id].mode && Number(val)>=0)
+        {
         //round to closest step
         const mode = analogOUT_array[id].mode || 3.3;
 
@@ -66,6 +68,8 @@ const AnalogOUT: React.FC<AnalogOUT_props> = ({ analogOUT_array, set_analog_out_
         set_analog_out_array(updatedArray);
 
         handleAnalogOutChange(id);
+
+        }
     };
 
     const handleSlider = (val: number | number[], id: number) => {
