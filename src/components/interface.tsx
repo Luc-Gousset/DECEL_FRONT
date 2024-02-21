@@ -34,8 +34,6 @@ export interface AnalogOUT_t {
     name: string,
     value: number,
     is_enable: boolean,
-    min_value: number,
-    max_value: number,
     mode: AnalogOUT_Mode,
 }
 

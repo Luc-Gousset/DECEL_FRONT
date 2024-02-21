@@ -25,16 +25,16 @@ const AnalogOutputControl: React.FC<AnalogOutputControlProps> = ({ output, index
     const mode = output.mode || 3.3;
 
     const step = mode / (Math.pow(2, 12));
-    const max_value = output.max_value > mode ? mode : output.max_value;
+    const max_value = mode;
 
     return (
         <div key={output.id} className="flex flex-row  w-full my-4">
             <span className="text-lg font-medium text-gray-800 mx-2 justify-center">{output.name}:</span>
-            <input type='number' min={output.min_value} max={output.max_value} className="rounded-md" value={output.value} step={step}
+            <input type='number' min={0} max={mode} className="rounded-md" value={output.value} step={step}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => onInputChange(e.target.value, index)} />
             <span className="text-lg font-medium text-gray-800 mx-2 justify-center">V</span>
             <Slider onChange={(val: number | number[]) => onSliderChange(val, output.id)}
-                className="my-auto mx-3" value={output.value} min={output.min_value} max={max_value} step={step} />
+                className="my-auto mx-3" value={output.value} min={0} max={max_value} step={step} />
         </div>
     );
 };
